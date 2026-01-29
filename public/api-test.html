@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test - AIAgenthon</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #1a1a1a; 
+            color: #fff; 
+        }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #1a472a; border: 1px solid #22c55e; }
+        .error { background: #4a1a1a; border: 1px solid #ef4444; }
+        .ps-item { 
+            background: #2a2a2a; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        .frozen { border-left-color: #ef4444; }
+        .available { border-left-color: #22c55e; }
+        code { background: #333; padding: 2px 6px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>AIAgenthon API Test</h1>
+    <div id="status"></div>
+    <div id="results"></div>
+
+    <script>
+        const API_URL = 'http://localhost:3001/api/problem-statements';
+        
+        async function testAPI() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                statusDiv.innerHTML = '<div class="status">Loading...</div>';
+                
+                const response = await fetch(`${API_URL}?t=${Date.now()}`, {
+                    cache: 'no-cache',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                statusDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ API Connected Successfully<br>
+                        Received ${data.data.length} problem statements
+                    </div>
+                `;
+                
+                resultsDiv.innerHTML = '<h2>Problem Statements:</h2>' + 
+                    data.data.map(ps => `
+                        <div class="ps-item ${ps.is_frozen ? 'frozen' : 'available'}">
+                            <strong>[${ps.ps_code}]</strong> ${ps.title}<br>
+                            <small>
+                                Teams: <code>${ps.team_count}/${ps.max_teams}</code> | 
+                                Frozen: <code>${ps.is_frozen}</code> | 
+                                ID: <code>${ps.id}</code>
+                            </small>
+                        </div>
+                    `).join('');
+                    
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="status error">
+                        ❌ Error: ${error.message}<br>
+                        <small>Make sure backend is running on port 3001</small>
+                    </div>
+                `;
+            }
+        }
+        
+        testAPI();
+        setInterval(testAPI, 5000); // Refresh every 5 seconds
+    </script>
+</body>
+</html>

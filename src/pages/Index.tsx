@@ -1,6 +1,5 @@
 import { lazy, Suspense, useState } from "react";
 import { Spotlight } from "@/components/ui/spotlight";
-import  Navbar  from "@/components/Navbar";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import { VantaBackground } from "@/components/ui/vanta-background";
 import ThiranLogo from "@/assets/ThiranLogo.png";
@@ -32,6 +31,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      
       {/* Show Thiran logo until 3D scene is fully loaded */}
       {!is3DLoaded && (
         <div className="fixed inset-0 flex items-center justify-center bg-black z-50">

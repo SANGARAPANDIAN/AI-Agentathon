@@ -1,10 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 import Eshwar from "@/assets/SriEshwar.png"
 import Thiran from "@/assets/ThiranLogo.png"
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -110,6 +112,18 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
             </motion.a>
           ))}
+          
+          {/* Register Button */}
+          <motion.button
+            onClick={() => navigate('/register')}
+            className="relative bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 text-white px-6 py-2 rounded-full font-semibold ml-2 overflow-hidden group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
+            <span className="relative">Register for PS</span>
+          </motion.button>
         </div>
         
         {/* Right Logo with glow */}
@@ -172,24 +186,22 @@ const Navbar = () => {
               ))}
               
               {/* Mobile CTA Button */}
-              <motion.a 
-                href="/"
+              <motion.button 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
                 className="relative bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 text-white px-8 py-4 rounded-xl font-semibold text-center mt-4 overflow-hidden group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={(e) => {
-                  e.preventDefault()
+                onClick={() => {
                   setIsOpen(false)
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  navigate('/register')
                 }}
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
-                <span className="relative">Register Now</span>
-              </motion.a>
+               <span className="relative">Register for PS</span>
+              </motion.button>
               
               {/* Mobile Thiran Logo */}
               <motion.div 

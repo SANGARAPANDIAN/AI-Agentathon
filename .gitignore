@@ -6,6 +6,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Backend dependencies
+backend/node_modules/
+backend/dist/
+
 # Build outputs
 dist/
 dist-ssr/
