@@ -56,7 +56,7 @@
    NODE_ENV = production
    SUPABASE_URL = https://cigenkhmolwdlxrsibov.supabase.co
    SUPABASE_ANON_KEY = sb_publishable_4sKcz7ickLeFFryDTXpvEQ_SNLzcZwo
-   ALLOWED_ORIGINS = https://your-vercel-app.vercel.app
+   ALLOWED_ORIGINS = https://ai-agentathon.vercel.app
    RATE_LIMIT_WINDOW_MS = 900000
    RATE_LIMIT_MAX_REQUESTS = 100
    ```
@@ -115,7 +115,7 @@
 5. **Deploy**
    - Click "Deploy"
    - Wait 2-3 minutes for build
-   - Your frontend URL will be: `https://aiagenthon-xyz.vercel.app`
+   - Your frontend URL will be: `https://ai-agentathon.vercel.app`
 
 ---
 
@@ -127,17 +127,17 @@
 2. **Select your backend service**
 3. **Go to "Environment" tab**
 4. **Edit `ALLOWED_ORIGINS` variable**
-   - Add your Vercel URL: `https://aiagenthon-xyz.vercel.app`
+   - Add your Vercel URL: `https://ai-agentathon.vercel.app`
    - You can add multiple, separated by commas:
      ```
-     https://aiagenthon-xyz.vercel.app,http://localhost:8081,http://localhost:3000
+     https://ai-agentathon.vercel.app,http://localhost:8081,http://localhost:3000
      ```
 5. **Save Changes**
 6. **Render will auto-redeploy** (wait 2-3 minutes)
 
 ### Step 2: Verify Deployment
 
-1. **Visit your Vercel app**: `https://aiagenthon-xyz.vercel.app`
+1. **Visit your Vercel app**: `https://ai-agentathon.vercel.app`
 2. **Navigate to Register page**: `/register`
 3. **Check dropdown** - should show all 10 problem statements
 4. **Test registration** - should work end-to-end!
@@ -171,7 +171,7 @@
 
 ### "Network Error" in Registration Form
 - Verify `VITE_API_URL` in Vercel points to correct Render URL
-- Test backend health: `https://your-backend.onrender.com/health`
+- Test backend health: `https://ai-agentathon-1.onrender.com/health`
 
 ### Backend Not Responding
 - Render free tier sleeps after inactivity
@@ -181,7 +181,7 @@
 ### Registration Not Working
 - Verify Supabase RLS policies are set (from fix-rls-policies.sql)
 - Check Render logs for errors
-- Test API directly: `https://your-backend.onrender.com/api/problem-statements`
+- Test API directly: `https://ai-agentathon-1.onrender.com/api/problem-statements`
 
 ---
 

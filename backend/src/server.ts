@@ -22,10 +22,13 @@ app.use(helmet({
 }));
 
 // CORS configuration for high traffic
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',').map(origin => origin.trim()) || [
   'http://localhost:5173',
   'http://localhost:4173',
 ];
+
+// Log allowed origins on startup
+logger.info('🔒 CORS enabled for origins:', allowedOrigins);
 
 app.use(
   cors({
