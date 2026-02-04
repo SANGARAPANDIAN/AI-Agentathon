@@ -4,7 +4,7 @@ import { SplineScene } from "@/components/ui/splite";
 import { Card } from "@/components/ui/card"
 import { Spotlight } from "@/components/ui/spotlight"
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight"
-import  Navbar  from "@/components/Navbar";
+// import  Navbar  from "@/components/Navbar";
 import BlurText from "@/components/ui/blurtext";
 import  Countdown  from "@/components/Countdown";
 import { DownloadButton } from "@/components/ui/download-animation";
@@ -42,7 +42,7 @@ export function SplineSceneBasic({ onLoad }: SplineSceneBasicProps) {
   return (
     <>
     
-    <Navbar />
+    {/* <Navbar /> */}
     <Card className="w-full h-screen border-none bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden px-4 md:px-8 lg:px-12">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
@@ -55,7 +55,7 @@ export function SplineSceneBasic({ onLoad }: SplineSceneBasicProps) {
         <div className="flex-1 px-4 md:px-8 lg:px-12 relative z-10 flex flex-col justify-center mt-32 sm:mt-40 md:mt-32 md:mb-80">
           
           {/* Sponsor Section */}
-          <div className="relative mb-6 mt-12 inline-block">
+          <div className="relative mb-6 mt-40 inline-block">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
             <div className="relative bg-gradient-to-r from-slate-900/90 to-slate-800/90 backdrop-blur-sm border border-cyan-400/40 rounded-xl px-4 py-3 sm:px-5 sm:py-4 flex items-center gap-4 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
               <div className="flex flex-col">
@@ -90,11 +90,11 @@ export function SplineSceneBasic({ onLoad }: SplineSceneBasicProps) {
         </div>
 
         {/* Right content - Hidden on mobile */}
-        <div className="flex-1 relative hidden md:block -mt-20">
+        <div className="flex-1 relative hidden md:block -mt-20 -ml-10">
           {shouldLoadSpline && (
             <SplineScene 
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full ml-20"
+              className="w-full h-full"
               onLoad={onLoad}
             />
           )}
