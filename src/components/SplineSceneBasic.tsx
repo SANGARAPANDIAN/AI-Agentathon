@@ -10,6 +10,7 @@ import  Countdown  from "@/components/Countdown";
 import { DownloadButton } from "@/components/ui/download-animation";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import RHInfosLogo from "@/assets/RH-Infos-TM-Logo.webp";
 
 
 const handleAnimationComplete = () => {
@@ -40,15 +41,7 @@ export function SplineSceneBasic({ onLoad }: SplineSceneBasicProps) {
 
   return (
     <>
-    <div className="w-full py-3 bg-gradient-to-r from-lime-400 via-green-400 to-emerald-500 flex items-center justify-center shadow-lg relative z-50 animate-pulse">
-      <BlurText
-        text="🏆 RESULTS ARE OUT NOW! SCROLL DOWN!!! 🏆"
-        delay={150}
-        animateBy="words"
-        direction="top"
-        className="text-base sm:text-lg md:text-xl font-bold text-white"
-      />
-    </div>
+    
     <Navbar />
     <Card className="w-full h-screen border-none bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden px-4 md:px-8 lg:px-12">
       <Spotlight
@@ -59,8 +52,29 @@ export function SplineSceneBasic({ onLoad }: SplineSceneBasicProps) {
       
       <div className="flex h-full flex-col md:flex-row ">
         {/* Left content */}
-        <div className="flex-1 px-4 md:px-8 lg:px-12 relative z-10 flex flex-col justify-center mt-20 sm:mt-32 md:mb-80">
+        <div className="flex-1 px-4 md:px-8 lg:px-12 relative z-10 flex flex-col justify-center mt-32 sm:mt-40 md:mt-32 md:mb-80">
           
+          {/* Sponsor Section */}
+          <div className="relative mb-6 mt-12 inline-block">
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+            <div className="relative bg-gradient-to-r from-slate-900/90 to-slate-800/90 backdrop-blur-sm border border-cyan-400/40 rounded-xl px-4 py-3 sm:px-5 sm:py-4 flex items-center gap-4 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+              <div className="flex flex-col">
+                <span className="text-xs sm:text-sm text-cyan-400/70 uppercase tracking-widest font-medium mb-1">
+                  Proudly Sponsored By
+                </span>
+                <span className="text-lg sm:text-xl md:text-2xl text-white font-bold tracking-wide">
+                  RH Infos
+                </span>
+              </div>
+              <div className="h-12 w-[1px] bg-cyan-400/30"></div>
+              <img 
+                src={RHInfosLogo} 
+                alt="RH Infos" 
+                className="h-14 sm:h-16 md:h-20 w-auto object-contain filter drop-shadow-[0_0_15px_rgba(34,211,238,0.6)] hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
           <BlurText
             text="AI Agentathon"
             delay={650}
@@ -70,63 +84,19 @@ export function SplineSceneBasic({ onLoad }: SplineSceneBasicProps) {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-audiowide"
           />
 
-
           <div className="w-full ">
             <Countdown />
           </div>
-          <button className="
-            
-            relative
-            cursor-not-allowed
-            px-4 py-2 sm:px-6 sm:py-3
-            mt-6 sm:mt-10
-            w-full sm:w-[220px]
-            min-h-[44px]
-            text-white font-medium
-            rounded-md
-            transition-all duration-[800ms]
-            bg-[length:280%_auto]
-            bg-gradient-to-br
-            from-[#3A7DE9]
-            via-[#47B8FF]
-            to-[#3A7DE9]
-            shadow-[0_0_20px_rgba(71,184,255,0.5),0_5px_5px_-1px_rgba(58,125,233,0.25),inset_4px_4px_8px_rgba(175,230,255,0.5),inset_-4px_-4px_8px_rgba(19,95,216,0.35)]
-            hover:bg-[position:right_top]
-            focus:outline-none
-            focus:ring-2
-            focus:ring-white
-            focus:ring-offset-2
-            focus:ring-offset-[#3A7DE9]
-            
-          "
-          disabled
-          onClick={handleRegister}
-          >
-            Register Now
-          </button>
         </div>
 
         {/* Right content - Hidden on mobile */}
-        <div className="flex-1 relative hidden md:block">
+        <div className="flex-1 relative hidden md:block -mt-20">
           {shouldLoadSpline && (
-            <>
-              <SplineScene 
-                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full ml-20"
-                onLoad={onLoad}
-              />
-              
-              {/* Download button positioned near robot's right ear */}
-              <div className="absolute top-[25%] right-[40%] z-20 transform -translate-x-1/2">
-                <DownloadButton 
-                  pdfUrl="/b1.pdf"
-                  fileName="AI-Agentathon-Brochure.pdf"
-                  onDownload={() => {
-                    console.log('Download initiated');
-                  }}
-                />
-              </div>
-            </>
+            <SplineScene 
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full ml-20"
+              onLoad={onLoad}
+            />
           )}
         </div>
       </div>
