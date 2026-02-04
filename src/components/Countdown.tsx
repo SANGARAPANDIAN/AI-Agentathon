@@ -10,7 +10,7 @@ interface TimeLeft {
 }
 
 const Countdown = () => {
-  const targetDate = new Date('2026-02-04T16:00:00').getTime();
+  const targetDate = new Date('2026-02-04T15:30:00').getTime();
 
   const calculateTimeLeft = (): TimeLeft => {
     const now = new Date().getTime();
